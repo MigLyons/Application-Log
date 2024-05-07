@@ -14,7 +14,7 @@ const {onDocumentCreated} = require("firebase-functions/v2/firestore");
 
 const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
 const { getFirestore, Timestamp, FieldValue, Filter } = require('firebase-admin/firestore');
-const serviceAccount = require('../functions/config/awad-htmx-firebase-adminsdk-qdsp4-f3a60ae816.json');
+const serviceAccount = require('./.config/awad-htmx-firebase-adminsdk-qdsp4-f3a60ae816.json');
 
 initializeApp({
     credential: cert(serviceAccount), 

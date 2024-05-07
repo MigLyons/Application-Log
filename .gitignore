@@ -66,4 +66,4 @@ node_modules/
 .env
 
 # the thingy for the service account that told me to hide it
-awad-htmx-firebase-adminsdk-qdsp4-f3a60ae816.json
+.config
