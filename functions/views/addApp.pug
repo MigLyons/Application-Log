@@ -1,0 +1,84 @@
+//- script.
+//-   function onSave() {
+//-     const firebaseDocObj = {
+//-         fields: {
+//-             title: {
+//-                 stringValue: {title}, 
+//-             },
+//-             company: {
+//-                 stringValue: {company}, 
+//-             }, 
+//-             description: {
+//-                 stringValue: {description},
+//-             },
+//-             date: {
+//-                 dateValue: {date},
+//-             },
+//-         },
+//-     };
+
+//-     fetch(
+//-         'https://firestore.googlesapis.com/v1/projects/awad-htmx/databases/(default)/documents/apps',
+//-         {
+//-             method: 'POST', 
+//-             body: JSON.stringify(firebaseDocObj),
+//-         }
+//-     )
+
+nav.bg-gray-800
+  .mx-auto.max-w-7xl.px-2
+    .relative.flex.h-16.items-center.justify-between
+      .absolute.inset-y-0.left-0.flex.items-center
+        .flex.flex-1.items-center.justify-center(class='sm:items-stretch sm:justify-start')
+          .flex.flex-shrink-0.items-center
+            img.h-8.w-auto(src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500' alt='Your Company')
+//query Put an object to collection Apps
+.flex.flex-col.justify-start
+  .relative.flex.w-full.flex-row.justify-center.overflow-hidden.p-1
+    .relative.inline.w-full.max-w-inner.py-6.h-fit.mt-2(class='lg:py-16 md:py-14 sm:py-12 xs:py-10 !pb-0')
+      h1.font-montserrat.tracking-wider.text-black.mb-5.font-medium.text-4xl.shadow-glow(class='sm:text-5xl') Log
+  .relative.flex.w-full.flex-row.justify-center.overflow-hidden.p-8
+    .relative.inline.w-full.max-w-inner.py-6.h-fit(class='lg:py-16 md:py-14 sm:py-12 xs:py-10 !py-0')
+      .flex.flex-col.grid-cols-footer-contact(class='lg:grid gap-[50px]')
+        div
+          form(hx-post="https://firestore.googlesapis.com/v1/projects/awad-htmx/databases/(default)/documents/Apps")
+            .space-y-12
+              .border-b.pb-12(class='border-gray-900/10')
+                .mt-10.grid.grid-cols-1.gap-x-6.gap-y-8(class='sm:grid-cols-6')
+                  div(class="sm:col-span-4")
+                    label.block.text-sm.font-medium.leading-6.text-gray-900(for='title') Title
+                    .mt-2
+                      .flex.rounded-md.shadow-sm.ring-1.ring-inset.ring-gray-300(class='focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md')
+                        span.flex.select-none.items-center.pl-3.text-gray-500(class='sm:text-sm')
+                        input#username.block.flex-1.border-0.bg-transparent.pl-1.text-gray-900(type='text' name='title' autocomplete='title' class='py-1.5 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6' placeholder='e.g. Software Engineering Intern')
+
+                    label.block.text-sm.font-medium.leading-6.text-gray-900(for='company') Company
+                    .mt-2
+                      .flex.rounded-md.shadow-sm.ring-1.ring-inset.ring-gray-300(class='focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md')
+                        span.flex.select-none.items-center.pl-3.text-gray-500(class='sm:text-sm')
+                        input#username.block.flex-1.border-0.bg-transparent.pl-1.text-gray-900(type='text' name='company' autocomplete='company' class='py-1.5 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6' placeholder='e.g. Starbucks')
+                        
+                  .col-span-full
+                    label.block.text-sm.font-medium.leading-6.text-gray-900(for='about') Description
+                    .mt-2
+                      textarea#about.block.w-full.rounded-md.border-0.text-gray-900.shadow-sm.ring-1.ring-inset.ring-gray-300(name='about' rows='3' class='py-1.5 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6')
+                    p.mt-3.text-sm.leading-6.text-gray-600 Copy-Paste the job description
+                  .col-span-full
+                h2.text-base.font-semibold.leading-7.text-gray-900 Hoops jumped through
+                  fieldset
+                    .mt-6.space-y-6
+                      .relative.flex.gap-x-3
+                        .flex.h-6.items-center
+                          input#candidates.h-4.w-4.rounded.border-gray-300.text-indigo-600(name='candidates' type='checkbox' class='focus:ring-indigo-600')
+                        .text-sm.leading-6
+                          label.font-medium.text-gray-900(for='candidates') Cover letter
+                      .relative.flex.gap-x-3
+                        .flex.h-6.items-center
+                          input#offers.h-4.w-4.rounded.border-gray-300.text-indigo-600(name='offers' type='checkbox' class='focus:ring-indigo-600')
+                        .text-sm.leading-6
+                          label.font-medium.text-gray-900(for='offers') Account required
+            .mt-6.flex.items-center.justify-end.gap-x-6
+              button.text-sm.font-semibold.leading-6.text-gray-900(type='button') Cancel
+              button.rounded-md.bg-indigo-600.px-3.py-2.text-sm.font-semibold.text-white.shadow-sm(type='submit' class='hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600' hx-post="https://firestore.googlesapis.com/v1/projects/awad-htmx/databases/(default)/documents/apps") Save
+.apps
+  br#appList

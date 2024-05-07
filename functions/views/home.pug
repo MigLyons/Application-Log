@@ -1,0 +1,18 @@
+nav.bg-gray-800
+  .mx-auto.max-w-7xl.px-2
+    .relative.flex.h-16.items-center.justify-between
+      .absolute.inset-y-0.left-0.flex.items-center
+        .flex.flex-1.items-center.justify-center(class='sm:items-stretch sm:justify-start')
+          .flex.flex-shrink-0.items-center
+            img.h-8.w-auto(src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500' alt='Your Company')
+        .absolute.inset-y-0.right-0.flex.items-center.pr-2(class='sm:static sm:inset-auto sm:ml-6 sm:pr-0')
+          a.bg-gray-900.text-white.rounded-md.px-3.py-2.text-sm.font-medium(hx-get="http://localhost:5000/awad-htmx/us-central1/addApp" hx-target="#main" class='hover:bg-gray-700 hover:text-white') Log Application
+//make a card that reflects the attributes of the list
+//query all from collection Apps
+.max-w-sm.rounded.overflow-hidden.shadow-lg.mx-auto.my-5
+  .px-6.py-4
+    .font-bold.text-xl.mb-2 #{title}
+      p.text-gray-700.text-base #{description}
+  .px-6.pt-4.pb-2
+    span.inline-block.bg-gray-200.rounded-full.px-3.py-1.text-sm.font-semibold.text-gray-700.mr-2.mb-2 #{date}
+    span.inline-block.bg-gray-200.rounded-full.px-3.py-1.text-sm.font-semibold.text-gray-700.mr-2.mb-2 #{company}

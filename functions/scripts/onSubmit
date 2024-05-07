@@ -1,0 +1,40 @@
+function saveApp() {
+    const firebaseDocObj = {
+        fields: {
+            title: {
+                stringValue: {title}, 
+            },
+            company: {
+                stringValue: {company}, 
+            }, 
+            description: {
+                stringValue: {description},
+            },
+            date: {
+                dateValue: {date},
+            },
+        },
+    };
+
+    fetch(
+        'https://firestore.googleapis.com/v1/{parent=projects/*/databases/*/documents/**}/{Apps}',
+
+        {
+            method: 'POST', 
+            body: JSON.stringify(firebaseDocObj),
+        }
+    )
+
+    .then((response) => {
+        console.log(response);
+        return response.json();
+    })
+    .then((data) => {
+        alert('Doc added');
+        console.log('success', data);
+    })
+    .catch((error) => {
+        alert(JSON.stringify(error));
+        console.log('failure', error);
+    });
+}
