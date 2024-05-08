@@ -12,6 +12,7 @@ const logger = require("firebase-functions/logger");
 const pug = require('pug');
 const {onDocumentCreated} = require("firebase-functions/v2/firestore");
 
+const cors = require('cors')({origin:  [/firebase\.com$/,]});
 const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
 const { getFirestore, Timestamp, FieldValue, Filter } = require('firebase-admin/firestore');
 const serviceAccount = require('./.config/awad-htmx-firebase-adminsdk-qdsp4-f3a60ae816.json');
@@ -40,22 +41,12 @@ exports.loadLogs = onRequest(async (request, response) => {
     response.end();
 });
 
-exports.addmessage = onRequest(async (req, res) => {
-    const original = req.query.text; //this string needs to be the form data
-    const writeResult = await getFirestore()
-        .collection("Apps")
-        .add({original: original});
-    res.json({result: 'Message with ID ${writeResult.id} added.'});
-});
-
-exports.addApp = onRequest((request, response) => {
+exports.addApp = onRequest(
+(request, response) => {
     let template = pug.compileFile('views/addApp.pug');
     let markup = template();
     response.writeHead(200, {'Content-Type' : 'text/html'});
-    response.write(markup);
-    // const formData = request.form.get();
-    // console.log(formData);
-    response.end();
+    response.end(markup);
 });
 
 exports.login = onRequest((request, response) => {
@@ -64,4 +55,3 @@ exports.login = onRequest((request, response) => {
     response.writeHead(200, {'Content-Type' : 'text/html'});
     response.end(markup);
 });
-
